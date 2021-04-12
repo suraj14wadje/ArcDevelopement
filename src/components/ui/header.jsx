@@ -18,7 +18,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import logo from "../../assets/logo.svg";
 
@@ -124,6 +124,7 @@ export default function Header() {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const classes = useStyles();
+  const path = useLocation();
 
   useEffect(() => {
     menuItems.forEach(({ link }, index) => {
@@ -139,7 +140,7 @@ export default function Header() {
           setSelectedMenuItem(null);
         }
       },
-      [activeTab, selectedMenuItem, tabs]
+      [activeTab, selectedMenuItem, tabs, path]
     );
   });
 
